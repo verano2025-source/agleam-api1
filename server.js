@@ -1,8 +1,10 @@
+require('dotenv').config(); // ✅ Esto carga las variables del archivo .env
+
 const express = require('express');
 const cors = require('cors');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000; // 👈 por si usas PORT en .env también
 
 // Middleware
 app.use(cors());
@@ -20,7 +22,6 @@ app.use('/api', apicultorRoutes);
 app.use('/api/perfil', perfilRoutes);
 app.use('/api/apiarios', apiariosRoutes);
 app.use('/api/notas', notasRoutes);
-
 
 // Iniciar servidor
 app.listen(PORT, () => {
